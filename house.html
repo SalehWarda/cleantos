@@ -1,0 +1,705 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Cleantos — خدمات تنظيف المنازل والأثاث الاحترافية في الكويت. تنظيف كنب، سجاد، ستائر، تعقيم وتطهير.">
+<meta name="keywords" content="تنظيف منازل, تنظيف كنب, تنظيف سجاد, تنظيف ستائر, تعقيم منازل, الكويت">
+<title>Cleantos | تنظيف المنازل والأثاث في الكويت</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+<style>
+:root{
+  --house-grad:linear-gradient(135deg,#25a55f,#1a7a44);
+  --house-light:#e8f5ee;
+  --house-accent:#25a55f;
+}
+
+/* Hero Section - House */
+.hero-house{
+  min-height:85vh;
+  background:linear-gradient(rgba(240,247,253,0.9), rgba(232,245,238,0.95)),url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1920&q=80');
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  padding-top:70px;
+}
+.hero-house::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 80% 50%, rgba(37,165,95,0.08) 0%, transparent 50%);
+  pointer-events:none;
+}
+
+/* House accent colors */
+.house-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:var(--house-light);
+  color:var(--house-accent);
+  font-size:12px;
+  font-weight:800;
+  padding:6px 16px;
+  border-radius:20px;
+  border:1.5px solid rgba(37,165,95,0.2);
+  margin-bottom:20px;
+}
+.house-title em{
+  font-style:normal;
+  color:var(--house-accent);
+}
+.house-btn{
+  background:var(--house-grad);
+  color:#fff;
+  box-shadow:0 6px 24px rgba(37,165,95,.35);
+}
+.house-btn:hover{
+  background:linear-gradient(135deg,#1a7a44,#146633);
+  transform:translateY(-2px);
+  box-shadow:0 10px 32px rgba(37,165,95,.45);
+}
+
+/* Service Cards */
+.srv-card-house{
+  background:var(--w);
+  border:2px solid var(--bd2);
+  border-radius:20px;
+  padding:32px 24px;
+  text-align:center;
+  transition:all .4s cubic-bezier(0.34,1.56,0.64,1);
+  position:relative;
+  overflow:hidden;
+}
+.srv-card-house::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;height:4px;
+  background:var(--house-grad);
+  transform:scaleX(0);
+  transition:transform .4s;
+}
+.srv-card-house:hover{
+  transform:translateY(-8px);
+  box-shadow:0 24px 60px rgba(37,165,95,.18);
+  border-color:var(--house-accent);
+}
+.srv-card-house:hover::before{
+  transform:scaleX(1);
+}
+.srv-card-house .ico{
+  width:72px;height:72px;
+  border-radius:20px;
+  background:linear-gradient(135deg,rgba(37,165,95,0.1),rgba(26,122,68,0.05));
+  border:2px solid rgba(37,165,95,0.2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 18px;
+  font-size:32px;
+  transition:all .4s ease;
+}
+.srv-card-house:hover .ico{
+  transform:rotate(-5deg) scale(1.1);
+  background:linear-gradient(135deg,var(--house-accent),#1a7a44);
+  box-shadow:0 8px 25px rgba(37,165,95,.35);
+}
+.srv-card-house h4{
+  font-size:16px;
+  font-weight:800;
+  color:var(--tx);
+  margin-bottom:10px;
+}
+.srv-card-house p{
+  font-size:13px;
+  color:var(--txl);
+  line-height:1.8;
+}
+
+/* Process Steps */
+.step-house{
+  position:relative;
+}
+.step-house .num{
+  width:60px;height:60px;
+  border-radius:50%;
+  background:var(--house-grad);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+  font-weight:900;
+  margin:0 auto 16px;
+  box-shadow:0 8px 30px rgba(37,165,95,.4);
+  position:relative;
+  z-index:2;
+  border:4px solid var(--sky);
+}
+.step-house .card{
+  background:var(--w);
+  border:2px solid var(--bd2);
+  border-radius:16px;
+  padding:28px 22px;
+  transition:all .35s;
+}
+.step-house .card:hover{
+  transform:translateY(-6px);
+  border-color:var(--house-accent);
+  box-shadow:0 16px 40px rgba(37,165,95,.15);
+}
+
+/* Pricing Cards */
+.price-card{
+  background:var(--w);
+  border:2px solid var(--bd2);
+  border-radius:20px;
+  padding:32px 24px;
+  text-align:center;
+  transition:all .4s;
+  position:relative;
+  overflow:hidden;
+}
+.price-card.popular{
+  border-color:var(--house-accent);
+  transform:scale(1.05);
+}
+.price-card.popular::before{
+  content:"الأكثر طلباً";
+  position:absolute;
+  top:12px;
+  left:-30px;
+  background:var(--house-grad);
+  color:#fff;
+  font-size:11px;
+  font-weight:800;
+  padding:4px 35px;
+  transform:rotate(-45deg);
+}
+.price-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 50px rgba(37,165,95,.15);
+}
+.price-card.popular:hover{
+  transform:scale(1.05) translateY(-8px);
+}
+.price-card .price{
+  font-size:36px;
+  font-weight:900;
+  color:var(--house-accent);
+  display:block;
+  margin:16px 0;
+}
+.price-card .price span{
+  font-size:14px;
+  color:var(--txl);
+  font-weight:600;
+}
+
+/* Gallery Grid */
+.gal-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+.gal-item{
+  border-radius:16px;
+  overflow:hidden;
+  position:relative;
+  aspect-ratio:4/3;
+  background:var(--sky2);
+  cursor:pointer;
+}
+.gal-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .5s ease;
+}
+.gal-item:hover img{
+  transform:scale(1.1);
+}
+.gal-item .overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,0.6),transparent);
+  display:flex;
+  align-items:flex-end;
+  padding:16px;
+  opacity:0;
+  transition:opacity .3s;
+}
+.gal-item:hover .overlay{
+  opacity:1;
+}
+.gal-item .overlay span{
+  color:#fff;
+  font-size:13px;
+  font-weight:700;
+}
+
+/* CTA Section */
+.cta-house{
+  background:var(--house-grad);
+  padding:80px 44px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.cta-house::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.cta-house h2{
+  font-size:clamp(28px,3.5vw,44px);
+  font-weight:900;
+  color:#fff;
+  line-height:1.3;
+  margin-bottom:16px;
+  position:relative;
+  z-index:1;
+}
+.cta-house p{
+  color:rgba(255,255,255,0.85);
+  font-size:16px;
+  line-height:1.8;
+  margin-bottom:32px;
+  max-width:600px;
+  margin-left:auto;
+  margin-right:auto;
+  position:relative;
+  z-index:1;
+}
+
+/* Dark mode */
+html.dark .srv-card-house,
+html.dark .step-house .card,
+html.dark .price-card{
+  background:var(--w);
+  border-color:var(--bd2);
+}
+html.dark .srv-card-house:hover,
+html.dark .step-house .card:hover,
+html.dark .price-card:hover{
+  border-color:var(--house-accent);
+}
+
+@media(max-width:800px){
+  .gal-grid{grid-template-columns:1fr 1fr}
+  .price-card.popular{transform:scale(1)}
+  .price-card.popular:hover{transform:scale(1) translateY(-8px)}
+}
+@media(max-width:600px){
+  .gal-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div id="pgb"></div>
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- WhatsApp -->
+<div id="wa">
+  <a href="https://wa.me/96541444878" target="_blank" class="wab">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+  <span class="wat">تواصل عبر واتساب 💬</span>
+</div>
+
+<!-- Booking Button -->
+<a href="contact.html" id="booking-btn">📅 احجز موعد</a>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div class="navi">
+    <a href="index.html"><img src="logo.jpeg" alt="Cleantos" style="height:70px;width:auto;object-fit:contain"/></a>
+    <nav>
+      <ul class="nul">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="index.html#our-work">أعمالنا</a></li>
+        <li><a href="index.html#services">خدماتنا</a></li>
+        <li><a href="houses.html" class="act">🏠 منازل</a></li>
+        <li><a href="cars.html">🚗 سيارات</a></li>
+        <li><a href="index.html#why-us">لماذا نحن</a></li>
+        <li><a href="contact.html">تواصل</a></li>
+      </ul>
+    </nav>
+    <div class="navr">
+      <div class="lt"><button class="a" id="ba" onclick="setL('ar')">ع</button><button id="be" onclick="setL('en')">EN</button></div>
+      <button id="dm" onclick="toggleDM()" title="Dark Mode">🌙</button>
+      <a href="houses.html" class="nc nc-az">🏠 منازل</a>
+      <a href="cars.html" class="nc nc-out">🚗 سيارات</a>
+      <div class="hbg" id="hbg" onclick="tmob()"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+  <div class="mobn" id="mobn">
+    <a href="index.html">🏠 الرئيسية</a>
+    <a href="index.html#our-work">🏠 أعمالنا</a>
+    <a href="index.html#services">🧹 خدماتنا</a>
+    <a href="houses.html" style="color:var(--az)">🏠 تنظيف منازل</a>
+    <a href="cars.html">🚗 تنظيف سيارات</a>
+    <a href="index.html#why-us">⭐ لماذا نحن</a>
+    <a href="contact.html">📞 تواصل معنا</a>
+  </div>
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero-house" id="home">
+  <div class="hero-content" style="max-width:1340px;margin:0 auto;padding:80px 44px;width:100%;">
+    <div style="text-align:center;max-width:700px;margin:0 auto;">
+      <div class="house-badge">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--house-accent);display:inline-block;"></span>
+        Cleantos — خدمات تنظيف المنازل والأثاث
+      </div>
+      <h1 class="hero-title house-title" style="font-size:clamp(32px,4vw,52px);">
+        نظافة منزلك <em>أولويتنا</em><br/>تنظيف عميق وتعقيم شامل
+      </h1>
+      <p class="hero-desc" style="max-width:600px;margin:0 auto 32px;">
+        نقدم خدمات تنظيف احترافية للمنازل والأثاث بأحدث المعدات وأجود المواد. من الكنب والسجاد إلى الستائر والمفروشات — نعيد لمنزلك بريقه وجماله.
+      </p>
+      <div class="hero-buttons" style="justify-content:center;">
+        <a href="https://wa.me/96541444878?text=أريد%20حجز%20تنظيف%20منزل" target="_blank" class="btn house-btn btn-lg">📱 احجز الآن عبر واتساب</a>
+        <a href="#services" class="btn btn-out btn-lg">🧹 تعرف على خدماتنا</a>
+      </div>
+      <div class="hero-stats" style="justify-content:center;margin-top:40px;">
+        <div>
+          <span class="hero-stat-num" style="color:var(--house-accent);"><span class="count" data-target="120">0</span>+</span>
+          <span class="hero-stat-label">فلل وشقق نظفناها</span>
+        </div>
+        <div>
+          <span class="hero-stat-num" style="color:var(--house-accent);"><span class="count" data-target="50">0</span>+</span>
+          <span class="hero-stat-label">شركة ومطعم</span>
+        </div>
+        <div>
+          <span class="hero-stat-num" style="color:var(--house-accent);"><span class="count" data-target="30">0</span>+</span>
+          <span class="hero-stat-label">شاليه ومدرسة</span>
+        </div>
+        <div>
+          <span class="hero-stat-num" style="color:var(--house-accent);">100%</span>
+          <span class="hero-stat-label">رضا العملاء</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES SECTION -->
+<section class="pad" id="services" style="background:var(--w);">
+  <div class="si">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="ey" style="justify-content:center"><div class="eyl" style="background:var(--house-accent);"></div><span class="eyt" style="color:var(--house-accent);">خدماتنا</span><div class="eyl" style="background:var(--house-accent);"></div></div>
+      <h2 class="st house-title">خدمات تنظيف <em>المنازل والأثاث</em></h2>
+      <p class="sd">نغطي جميع احتياجاتك من التنظيف المنزلي بأعلى معايير الجودة</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
+      <div class="srv-card-house">
+        <div class="ico">🛋️</div>
+        <h4>تنظيف الكنب والمجالس</h4>
+        <p>تنظيف عميق ببخار الماء لإزالة البقع والروائح مع الحفاظ على الأقمشة</p>
+      </div>
+      <div class="srv-card-house">
+        <div class="ico">🧹</div>
+        <h4>تنظيف السجاد والموكيت</h4>
+        <p>غسيل وتجفيف احترافي بمواد آمنة على الألوان والأنسجة</p>
+      </div>
+      <div class="srv-card-house">
+        <div class="ico">🪟</div>
+        <h4>تنظيف الستائر والمفروشات</h4>
+        <p>تنظيف بدون فك وتركيب بأحدث تقنيات التنظيف الجاف</p>
+      </div>
+      <div class="srv-card-house">
+        <div class="ico">🏠</div>
+        <h4>تنظيف المنازل الشامل</h4>
+        <p>تنظيف كامل للمنزل من الأرضيات إلى الأسقف مع تعقيم وتطهير</p>
+      </div>
+      <div class="srv-card-house">
+        <div class="ico">🛏️</div>
+        <h4>تنظيف المراتب والمخدات</h4>
+        <p>إزالة العث والبكتيريا ببخار الماء الساخن للنوم الصحي</p>
+      </div>
+      <div class="srv-card-house">
+        <div class="ico">✨</div>
+        <h4>تلميع الأرضيات والرخام</h4>
+        <p>إعادة اللمعان للأرضيات السيراميك والرخام والباركيه</p>
+      </div>
+      <div class="srv-card-house">
+        <div class="ico">🦠</div>
+        <h4>تعقيم وتطهير</h4>
+        <p>تعقيم شامل بمواد معتمدة من وزارة الصحة لحماية أسرتك</p>
+      </div>
+      <div class="srv-card-house">
+        <div class="ico">🏢</div>
+        <h4>تنظيف المكاتب والشركات</h4>
+        <p>خدمات تنظيف دورية للمكاتب والشركات بعقود مرنة</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US SECTION -->
+<section class="pad" style="background:var(--sky);">
+  <div class="si">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="ey" style="justify-content:center"><div class="eyl" style="background:var(--house-accent);"></div><span class="eyt" style="color:var(--house-accent);">لماذا نحن</span><div class="eyl" style="background:var(--house-accent);"></div></div>
+      <h2 class="st house-title">لماذا تختار <em>Cleantos</em> لتنظيف منزلك؟</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+      <div class="srv-card-house">
+        <div class="ico">👨‍🔧</div>
+        <h4>فريق محترف ومدرب</h4>
+        <p>فريقنا مدرب على أعلى مستويات الجودة مع خبرة 5+ سنوات في مجال التنظيف</p>
+      </div>
+      <div class="srv-card-house">
+        <div class="ico">🌿</div>
+        <h4>مواد آمنة وصديقة للبيئة</h4>
+        <p>نستخدم مواد تنظيف عالية الجودة آمنة على الأطفال والحيوانات الأليفة</p>
+      </div>
+      <div class="srv-card-house">
+        <div class="ico">⚡</div>
+        <h4>سرعة في التنفيذ</h4>
+        <p>نصلك في نفس اليوم أو بحد أقصى 24 ساعة من الحجز</p>
+      </div>
+      <div class="srv-card-house">
+        <div class="ico">💰</div>
+        <h4>أسعار تنافسية</h4>
+        <p>أفضل الأسعار في الكويت مع ضمان الجودة والرضا التام</p>
+      </div>
+      <div class="srv-card-house">
+        <div class="ico">🔒</div>
+        <h4>ضمان الرضا</h4>
+        <p>إذا لم تكن راضياً عن الخدمة، نعيد التنظيف مجاناً</p>
+      </div>
+      <div class="srv-card-house">
+        <div class="ico">📍</div>
+        <h4>نغطي جميع مناطق الكويت</h4>
+        <p>نخدم جميع المحافظات من العاصمة إلى الجهراء والأحمدي</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS SECTION -->
+<section class="pad" style="background:var(--w);">
+  <div class="si">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="ey" style="justify-content:center"><div class="eyl" style="background:var(--house-accent);"></div><span class="eyt" style="color:var(--house-accent);">خطوات العمل</span><div class="eyl" style="background:var(--house-accent);"></div></div>
+      <h2 class="st house-title">كيف نعمل؟ <em>3 خطوات بسيطة</em></h2>
+    </div>
+    <div style="display:flex;align-items:stretch;justify-content:center;gap:0;flex-wrap:wrap;position:relative;">
+      <div style="position:absolute;top:30px;left:15%;right:15%;height:3px;background:linear-gradient(90deg,var(--house-accent),#1a7a44);border-radius:3px;opacity:0.3;z-index:0"></div>
+      
+      <div class="step-house" style="flex:1;min-width:280px;max-width:340px;text-align:center;position:relative;z-index:1;padding:0 16px;margin-bottom:24px">
+        <div class="num">1</div>
+        <div class="card">
+          <h4 style="font-size:17px;font-weight:800;color:var(--tx);margin-bottom:10px">احجز موعدك</h4>
+          <p style="font-size:14px;color:var(--txl);line-height:1.9">اتصل بنا أو راسلنا على واتساب وحدد الخدمة والوقت المناسب لك</p>
+        </div>
+      </div>
+      
+      <div style="display:flex;align-items:center;justify-content:center;padding-top:10px;z-index:2">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--house-light);border:2px solid var(--house-accent);display:flex;align-items:center;justify-content:center;color:var(--house-accent);font-size:16px;font-weight:900;">→</div>
+      </div>
+      
+      <div class="step-house" style="flex:1;min-width:280px;max-width:340px;text-align:center;position:relative;z-index:1;padding:0 16px;margin-bottom:24px">
+        <div class="num">2</div>
+        <div class="card">
+          <h4 style="font-size:17px;font-weight:800;color:var(--tx);margin-bottom:10px">الفحص والتنظيف</h4>
+          <p style="font-size:14px;color:var(--txl);line-height:1.9">فريقنا يصل في الوقت المحدد ويبدأ بفحص شامل ثم التنظيف الاحترافي</p>
+        </div>
+      </div>
+      
+      <div style="display:flex;align-items:center;justify-content:center;padding-top:10px;z-index:2">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--house-light);border:2px solid var(--house-accent);display:flex;align-items:center;justify-content:center;color:var(--house-accent);font-size:16px;font-weight:900;">→</div>
+      </div>
+      
+      <div class="step-house" style="flex:1;min-width:280px;max-width:340px;text-align:center;position:relative;z-index:1;padding:0 16px;margin-bottom:24px">
+        <div class="num">3</div>
+        <div class="card">
+          <h4 style="font-size:17px;font-weight:800;color:var(--tx);margin-bottom:10px">استمتع بالنتيجة</h4>
+          <p style="font-size:14px;color:var(--txl);line-height:1.9">استلم منزلك نظيفاً ومعقماً كأنه جديد! نضمن رضاك التام</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING SECTION -->
+<section class="pad" style="background:var(--sky);">
+  <div class="si">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="ey" style="justify-content:center"><div class="eyl" style="background:var(--house-accent);"></div><span class="eyt" style="color:var(--house-accent);">الباقات والأسعار</span><div class="eyl" style="background:var(--house-accent);"></div></div>
+      <h2 class="st house-title">باقات تنظيف <em>المنازل</em></h2>
+      <p class="sd">اختر الباقة المناسبة لك أو تواصل معنا لتخصيص خدمة حسب احتياجك</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:center;">
+      <div class="price-card">
+        <h4 style="font-size:18px;font-weight:800;color:var(--tx);">باقة الأساسية</h4>
+        <p style="font-size:13px;color:var(--txl);margin:8px 0;">مثالية للتنظيف الدوري</p>
+        <span class="price">25 <span>د.ك</span></span>
+        <ul style="list-style:none;text-align:right;padding:0;margin:20px 0;">
+          <li style="padding:6px 0;font-size:13px;color:var(--txl);border-bottom:1px solid var(--bd2);">✓ تنظيف غرفة واحدة</li>
+          <li style="padding:6px 0;font-size:13px;color:var(--txl);border-bottom:1px solid var(--bd2);">✓ تنظيف حمام واحد</li>
+          <li style="padding:6px 0;font-size:13px;color:var(--txl);border-bottom:1px solid var(--bd2);">✓ تنظيف المطبخ</li>
+          <li style="padding:6px 0;font-size:13px;color:var(--txl);">✓ تعقيم أساسي</li>
+        </ul>
+        <a href="https://wa.me/96541444878?text=أريد%20حجز%20باقة%20الأساسية" target="_blank" class="btn house-btn" style="width:100%;justify-content:center;">احجز الآن</a>
+      </div>
+      
+      <div class="price-card popular">
+        <h4 style="font-size:18px;font-weight:800;color:var(--tx);">باقة الشاملة</h4>
+        <p style="font-size:13px;color:var(--txl);margin:8px 0;">الأكثر طلباً — تنظيف كامل</p>
+        <span class="price">55 <span>د.ك</span></span>
+        <ul style="list-style:none;text-align:right;padding:0;margin:20px 0;">
+          <li style="padding:6px 0;font-size:13px;color:var(--txl);border-bottom:1px solid var(--bd2);">✓ تنظيف 3 غرف</li>
+          <li style="padding:6px 0;font-size:13px;color:var(--txl);border-bottom:1px solid var(--bd2);">✓ تنظيف 2 حمام</li>
+          <li style="padding:6px 0;font-size:13px;color:var(--txl);border-bottom:1px solid var(--bd2);">✓ تنظيف المطبخ والصالة</li>
+          <li style="padding:6px 0;font-size:13px;color:var(--txl);border-bottom:1px solid var(--bd2);">✓ تنظيف الكنب</li>
+          <li style="padding:6px 0;font-size:13px;color:var(--txl);">✓ تعقيم شامل</li>
+        </ul>
+        <a href="https://wa.me/96541444878?text=أريد%20حجز%20باقة%20الشاملة" target="_blank" class="btn house-btn" style="width:100%;justify-content:center;">احجز الآن</a>
+      </div>
+      
+      <div class="price-card">
+        <h4 style="font-size:18px;font-weight:800;color:var(--tx);">باقة الفيلا</h4>
+        <p style="font-size:13px;color:var(--txl);margin:8px 0;">للفلل والمنازل الكبيرة</p>
+        <span class="price">120 <span>د.ك</span></span>
+        <ul style="list-style:none;text-align:right;padding:0;margin:20px 0;">
+          <li style="padding:6px 0;font-size:13px;color:var(--txl);border-bottom:1px solid var(--bd2);">✓ تنظيف كامل للفيلا</li>
+          <li style="padding:6px 0;font-size:13px;color:var(--txl);border-bottom:1px solid var(--bd2);">✓ جميع الغرف والحمامات</li>
+          <li style="padding:6px 0;font-size:13px;color:var(--txl);border-bottom:1px solid var(--bd2);">✓ تنظيف السجاد والكنب</li>
+          <li style="padding:6px 0;font-size:13px;color:var(--txl);border-bottom:1px solid var(--bd2);">✓ تلميع الأرضيات</li>
+          <li style="padding:6px 0;font-size:13px;color:var(--txl);">✓ تعقيم شامل + متابعة</li>
+        </ul>
+        <a href="https://wa.me/96541444878?text=أريد%20حجز%20باقة%20الفيلا" target="_blank" class="btn house-btn" style="width:100%;justify-content:center;">احجز الآن</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY SECTION -->
+<section class="pad" style="background:var(--w);">
+  <div class="si">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="ey" style="justify-content:center"><div class="eyl" style="background:var(--house-accent);"></div><span class="eyt" style="color:var(--house-accent);">معرض أعمالنا</span><div class="eyl" style="background:var(--house-accent);"></div></div>
+      <h2 class="st house-title">شوف النتيجة <em>بعيونك</em></h2>
+      <p class="sd">صور حقيقية من أعمالنا في تنظيف المنازل والأثاث</p>
+    </div>
+    <div class="gal-grid">
+      <div class="gal-item">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=600&q=80" alt="تنظيف كنب"/>
+        <div class="overlay"><span>تنظيف الكنب والمجالس</span></div>
+      </div>
+      <div class="gal-item">
+        <img src="https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=600&q=80" alt="تنظيف سجاد"/>
+        <div class="overlay"><span>تنظيف السجاد والموكيت</span></div>
+      </div>
+      <div class="gal-item">
+        <img src="https://images.unsplash.com/photo-1527515637462-cff94ee77e98?auto=format&fit=crop&w=600&q=80" alt="تنظيف منزل"/>
+        <div class="overlay"><span>تنظيف المنازل الشامل</span></div>
+      </div>
+      <div class="gal-item">
+        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="تعقيم"/>
+        <div class="overlay"><span>تعقيم وتطهير</span></div>
+      </div>
+      <div class="gal-item">
+        <img src="https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=600&q=80" alt="تنظيف ستائر"/>
+        <div class="overlay"><span>تنظيف الستائر</span></div>
+      </div>
+      <div class="gal-item">
+        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=600&q=80" alt="تنظيف مطبخ"/>
+        <div class="overlay"><span>تنظيف المطابخ</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-house">
+  <h2>جاهز تنظف منزلك؟</h2>
+  <p>احجز موعدك الآن واستمتع بنظافة مثالية مع ضمان الرضا التام. فريقنا جاهز لخدمتك في جميع مناطق الكويت.</p>
+  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+    <a href="https://wa.me/96541444878?text=أريد%20حجز%20تنظيف%20منزل" target="_blank" class="btn btn-wh btn-lg">📱 تواصل عبر واتساب</a>
+    <a href="contact.html" class="btn btn-out btn-lg" style="border-color:#fff!important;color:#fff;">📅 احجز موعد</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fin">
+    <div class="ftop">
+      <div>
+        <a href="index.html"><img src="logo.jpeg" alt="Cleantos" style="height:60px;width:auto;object-fit:contain;margin-bottom:16px;filter:brightness(0) invert(1);"/></a>
+        <p class="fab">خدمات تنظيف احترافية للمنازل والأثاث والسيارات في الكويت. أجود المواد، أحدث المعدات، التزام بالمواعيد.</p>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div class="fci"><span class="fcl">الهاتف</span><a href="tel:+96541444878" class="fcv">+965 4144 4878</a></div>
+          <div class="fci"><span class="fcl">واتساب</span><a href="https://wa.me/96541444878" class="fcv">+965 4144 4878</a></div>
+        </div>
+      </div>
+      <div class="fcol">
+        <h4>خدماتنا</h4>
+        <ul>
+          <li><a href="houses.html">تنظيف المنازل</a></li>
+          <li><a href="houses.html">تنظيف الكنب</a></li>
+          <li><a href="houses.html">تنظيف السجاد</a></li>
+          <li><a href="cars.html">تنظيف السيارات</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h4>الشركة</h4>
+        <ul>
+          <li><a href="index.html#why-us">لماذا نحن</a></li>
+          <li><a href="index.html#our-work">أعمالنا</a></li>
+          <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h4>تواصل</h4>
+        <ul>
+          <li><a href="https://wa.me/96541444878">واتساب</a></li>
+          <li><a href="tel:+96541444878">اتصال</a></li>
+          <li><a href="contact.html">حجز موعد</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbtm">
+      <span class="fcp">© 2025 Cleantos. جميع الحقوق محفوظة.</span>
+      <div class="socs">
+        <a href="#" class="soc">IG</a>
+        <a href="#" class="soc">TW</a>
+        <a href="#" class="soc">FB</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu
+function tmob(){document.getElementById('mobn').classList.toggle('o');document.getElementById('hbg').classList.toggle('o');}
+// Dark mode
+function toggleDM(){document.documentElement.classList.toggle('dark');localStorage.setItem('dm',document.documentElement.classList.contains('dark'));} 
+if(localStorage.getItem('dm')==='true')document.documentElement.classList.add('dark');
+// Language
+function setL(l){if(l==='en')document.documentElement.classList.add('ltr');else document.documentElement.classList.remove('ltr');localStorage.setItem('lang',l);}
+if(localStorage.getItem('lang')==='en')document.documentElement.classList.add('ltr');
+// Scroll progress
+window.addEventListener('scroll',function(){var s=document.documentElement.scrollTop||document.body.scrollTop;var h=document.documentElement.scrollHeight-document.documentElement.clientHeight;var p=(s/h)*100;document.getElementById('pgb').style.width=p+'%';document.getElementById('btt').classList.toggle('sh',s>400);});
+// Count animation
+var counted=false;
+function countUp(){if(counted)return;var els=document.querySelectorAll('.count');els.forEach(function(el){var target=parseInt(el.getAttribute('data-target'));var current=0;var inc=target/50;var timer=setInterval(function(){current+=inc;if(current>=target){current=target;clearInterval(timer);}el.textContent=Math.floor(current);},30);});counted=true;}
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){countUp();}});},{threshold:0.5});
+document.querySelectorAll('.count').forEach(function(el){observer.observe(el.parentElement);});
+</script>
+
+</body>
+</html>
