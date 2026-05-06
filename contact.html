@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Cleantos - خدمات التنظيف الاحترافية في الكويت. تنظيف منازل، تنظيف سيارات، تعقيم. خدمة 24 ساعة.">
+<meta name="keywords" content="تنظيف منازل, تنظيف سيارات, تعقيم, الكويت, Cleantos, خدمات تنظيف">
+<title>تواصل معنا | Contact | Cleantos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+<style>
+/* Dark Mode */
+html.dark {
+  --sky: #0f1a25;
+  --sky2: #152535;
+  --w: #1a2634;
+  --az: #6bb8e0;
+  --az2: #4a9ec9;
+  --az3: #2d7aa8;
+  --azp: #1a3a4d;
+  --dk: #0d1218;
+  --tx: #e8f4fc;
+  --txl: #8ab4c7;
+  --bd: #2a4a5e;
+  --bd2: #1e3a4d;
+}
+html.dark .card, html.dark .srv, html.dark .pc, html.dark .vm, html.dark .fqi, html.dark .ci {
+  background: var(--w);
+  border-color: var(--bd2);
+}
+html.dark footer { background: #0a1018; }
+
+/* Dark Mode Toggle Button */
+#dm {
+  background: var(--sky);
+  border: 1.5px solid var(--bd);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all .2s;
+  line-height: 1;
+}
+#dm:hover {
+  background: var(--azp);
+  transform: scale(1.1);
+}
+html.dark #dm {
+  background: var(--azp);
+  border-color: var(--az);
+}
+
+/* WhatsApp Copy Button */
+.wab-copy {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--w);
+  border: 2px solid var(--bd);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all .2s;
+  box-shadow: 0 2px 10px rgba(0,0,0,.1);
+}
+.wab-copy:hover {
+  background: var(--azp);
+  border-color: var(--az);
+  transform: scale(1.1);
+}
+html.dark .wab-copy {
+  background: var(--w);
+  border-color: var(--bd2);
+}
+
+/* Toast */
+#toast {
+  position: fixed;
+  bottom: 140px;
+  right: 26px;
+  background: var(--az2);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all .3s;
+  z-index: 999;
+  pointer-events: none;
+}
+html.ltr #toast {
+  right: auto;
+  left: 26px;
+}
+
+/* Contact Hero Banner */
+.contact-hero {
+  min-height: 55vh;
+  background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 50%, #0d1b2a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 40px 20px;
+}
+.contact-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('contact-banner.png') center/cover no-repeat;
+  opacity: 0.85;
+}
+.contact-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+}
+.contact-hero-logo {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  border: 4px solid rgba(255,255,255,0.2);
+  box-shadow: 0 0 40px rgba(0,150,255,0.3);
+  object-fit: cover;
+}
+.contact-hero h1 {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+.contact-hero p {
+  color: rgba(255,255,255,0.8);
+  font-size: 18px;
+  margin-bottom: 24px;
+}
+.contact-hero .services-tags {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.contact-hero .tag {
+  background: rgba(0,200,255,0.15);
+  border: 1.5px solid rgba(0,200,255,0.3);
+  color: #00c8ff;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.contact-hero .slogan {
+  color: rgba(255,255,255,0.6);
+  font-size: 16px;
+  font-style: italic;
+}
+
+/* 24/7 Badge */
+.badge-24h {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #00c853, #00a344);
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 800;
+  box-shadow: 0 4px 20px rgba(0,200,83,0.4);
+  margin-top: 16px;
+}
+.badge-24h .pulse {
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-radius: 50%;
+  animation: pulse-dot 2s infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+
+/* Contact Info Cards */
+.info-section {
+  background: var(--sky);
+  padding: 64px 44px;
+  position: relative;
+}
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.info-card {
+  background: var(--w);
+  border: 1.5px solid var(--bd2);
+  border-radius: 16px;
+  padding: 28px;
+  text-align: center;
+  transition: all .3s;
+}
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 34px rgba(90,170,212,.14);
+  border-color: var(--az);
+}
+.info-card .icon {
+  width: 60px;
+  height: 60px;
+  background: var(--azp);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin: 0 auto 16px;
+}
+.info-card h3 {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--tx);
+  margin-bottom: 8px;
+}
+.info-card .value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--az2);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 4px;
+  transition: color .2s;
+}
+.info-card .value:hover {
+  color: var(--az3);
+}
+.info-card .sub {
+  font-size: 12px;
+  color: var(--txl);
+}
+
+/* Address Card (full width) */
+.address-card {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-align: right;
+}
+html.ltr .address-card {
+  text-align: left;
+}
+.address-card .icon {
+  flex-shrink: 0;
+}
+.address-card .content {
+  flex: 1;
+}
+.address-card h3 {
+  margin-bottom: 6px;
+}
+.address-card .value {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--tx);
+}
+
+/* Instagram Section */
+.instagram-section {
+  background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  padding: 40px 44px;
+  text-align: center;
+}
+.instagram-section h2 {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+.instagram-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  color: #dc2743;
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all .3s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+.instagram-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+.instagram-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Map Section */
+.map-section {
+  padding: 0;
+  background: var(--w);
+}
+.map-section iframe {
+  width: 100%;
+  height: 400px;
+  border: none;
+  display: block;
+}
+
+/* Footer for Cleantos */
+footer {
+  background: var(--dk);
+  color: #fff;
+  padding: 40px 44px 20px;
+}
+.footer-content {
+  max-width: 1340px;
+  margin: 0 auto;
+  text-align: center;
+}
+.footer-logo {
+  height: 80px;
+  margin-bottom: 16px;
+}
+.footer-desc {
+  color: rgba(255,255,255,0.5);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.footer-social a {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all .25s;
+}
+.footer-social a:hover {
+  transform: translateY(-3px);
+}
+.footer-social .insta {
+  background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  color: #fff;
+}
+.footer-social .wa {
+  background: #25d366;
+  color: #fff;
+}
+.footer-social .fb {
+  background: #1877f2;
+  color: #fff;
+}
+.footer-social svg {
+  width: 22px;
+  height: 22px;
+}
+.footer-copy {
+  color: rgba(255,255,255,0.25);
+  font-size: 13px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Responsive */
+@media(max-width: 800px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+  .address-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  html.ltr .address-card {
+    text-align: center;
+  }
+  .contact-hero {
+    min-height: 45vh;
+  }
+  .contact-hero-logo {
+    width: 140px;
+    height: 140px;
+  }
+  .info-section {
+    padding: 40px 20px;
+  }
+  .instagram-section {
+    padding: 32px 20px;
+  }
+}
+</style>
+</head>
+<body>
+<div id="pgb"></div>
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- WhatsApp Fixed Button -->
+<div id="wa">
+  <a href="https://wa.me/96541444878" target="_blank" class="wab">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+  <button class="wab-copy" onclick="copyPhone()" title="نسخ الرقم">📋</button>
+  <span class="wat"><span class="ar">تواصل عبر واتساب 💬</span><span class="en" style="display:none">Chat on WhatsApp 💬</span></span>
+</div>
+
+<div id="toast"><span class="ar">✅ تم نسخ الرقم</span><span class="en" style="display:none">✅ Number copied</span></div>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div class="navi">
+    <a href="index.html"><img src="logo.png" alt="Cleantos" style="height:70px;width:auto;object-fit:contain"/></a>
+    <nav>
+      <ul class="nul">
+        <li><a href="index.html"><span class="ar">الرئيسية</span><span class="en" style="display:none">Home</span></a></li>
+        <li><a href="index.html#our-work"><span class="ar">أعمالنا</span><span class="en" style="display:none">Our Work</span></a></li>
+        <li><a href="index.html#services"><span class="ar">خدماتنا</span><span class="en" style="display:none">Services</span></a></li>
+        <li><a href="#"><span class="ar">معرض الصور</span><span class="en" style="display:none">Gallery</span></a></li>
+        <li><a href="#"><span class="ar">معرض الفيديو</span><span class="en" style="display:none">Videos</span></a></li>
+        <li><a href="index.html#why-us"><span class="ar">لماذا نحن</span><span class="en" style="display:none">Why Us</span></a></li>
+        <li><a href="contact.html" class="act"><span class="ar">تواصل</span><span class="en" style="display:none">Contact</span></a></li>
+      </ul>
+    </nav>
+    <div class="navr">
+      <div class="lt"><button class="a" id="ba" onclick="setL('ar')">ع</button><button id="be" onclick="setL('en')">EN</button></div>
+      <button id="dm" onclick="toggleDM()" title="Dark Mode">🌙</button>
+      <a href="house.html" class="nc nc-az">🏠 <span class="ar">منازل</span><span class="en" style="display:none">Houses</span></a>
+      <a href="car.html" class="nc nc-out">🚗 <span class="ar">سيارات</span><span class="en" style="display:none">Cars</span></a>
+    </div>
+          <div class="hbg" id="hbg" onclick="tmob()"><span></span><span></span><span></span></div>
+
+  </div>
+  <div class="mobn" id="mobn">
+    <a href="index.html"><span class="ar">🏠 الرئيسية</span><span class="en" style="display:none">🏠 Home</span></a>
+    <a href="index.html#our-work"><span class="ar">🏠 أعمالنا</span><span class="en" style="display:none">🏠 Our Work</span></a>
+    <a href="index.html#services"><span class="ar">🧹 خدماتنا</span><span class="en" style="display:none">🧹 Services</span></a>
+    <a href="#"><span class="ar">📷 معرض الصور</span><span class="en" style="display:none">📷 Gallery</span></a>
+    <a href="#"><span class="ar">🎬 معرض الفيديو</span><span class="en" style="display:none">🎬 Videos</span></a>
+    <a href="index.html#why-us"><span class="ar">⭐ لماذا نحن</span><span class="en" style="display:none">⭐ Why Us</span></a>
+    <a href="contact.html"><span class="ar">📞 تواصل معنا</span><span class="en" style="display:none">📞 Contact</span></a>
+    <a href="house.html"><span class="ar">🏠 تنظيف منازل</span><span class="en" style="display:none">🏠 House Cleaning</span></a>
+    <a href="car.html"><span class="ar">🚗 تنظيف سيارات</span><span class="en" style="display:none">🚗 Car Cleaning</span></a>
+  </div>
+</header>
+<div style="margin-top:70px"></div>
+
+<!-- ===== CONTACT HERO BANNER ===== -->
+<section class="contact-hero">
+  <div class="contact-hero-content">
+    <img src="cleantos-contact-banner.png" alt="Cleantos" class="contact-hero-logo"/>
+    <h1><span class="ar">تواصل معنا</span><span class="en" style="display:none">Contact Us</span></h1>
+    <p><span class="ar">نحن هنا لخدمتكم</span><span class="en" style="display:none">We Are Here to Serve You</span></p>
+    <div class="services-tags">
+      <div class="tag">🏠 <span class="ar">تنظيف وتعقيم المنازل</span><span class="en" style="display:none">House Cleaning</span></div>
+      <div class="tag">🚗 <span class="ar">تنظيف وتلميع السيارات</span><span class="en" style="display:none">Car Detailing</span></div>
+    </div>
+    <div class="badge-24h">
+      <span class="pulse"></span>
+      <span class="ar">خدمة 24 ساعة / 7 أيام</span>
+      <span class="en" style="display:none">24/7 Service</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT INFO CARDS ===== -->
+<section class="info-section">
+  <div style="text-align:center;margin-bottom:36px">
+    <div class="ey" style="justify-content:center"><div class="eyl"></div><span class="eyt"><span class="ar">معلومات التواصل</span><span class="en" style="display:none">Contact Info</span></span></div>
+    <h2 class="st"><span class="ar">نسعد <em>بخدمتك</em> في أي وقت</span><span class="en" style="display:none">We're Happy to <em>Serve You</em> Anytime</span></h2>
+  </div>
+
+  <div class="info-grid">
+    <!-- Phone 1 -->
+    <div class="info-card">
+      <div class="icon">📞</div>
+      <h3><span class="ar">الهاتف الأول</span><span class="en" style="display:none">Phone 1</span></h3>
+      <a href="tel:+96541444878" class="value">+965 4144 4878</a>
+      <span class="sub"><span class="ar">متاح على الواتساب</span><span class="en" style="display:none">Available on WhatsApp</span></span>
+    </div>
+
+    <!-- Phone 2 -->
+    <div class="info-card">
+      <div class="icon">📱</div>
+      <h3><span class="ar">الهاتف الثاني</span><span class="en" style="display:none">Phone 2</span></h3>
+      <a href="tel:+96541444898" class="value">+965 4144 4898</a>
+      <span class="sub"><span class="ar">متاح على الواتساب</span><span class="en" style="display:none">Available on WhatsApp</span></span>
+    </div>
+
+    <!-- Address -->
+    <div class="info-card address-card">
+      <div class="icon">📍</div>
+      <div class="content">
+        <h3><span class="ar">العنوان</span><span class="en" style="display:none">Address</span></h3>
+        <p class="value" style="font-size:15px;line-height:1.8">
+          <span class="ar">الكويت، الجهراء<br>مجمع العاقول قطعة 93 - قسيمة 7<br>الدور ميزانين - مكتب رقم 27</span>
+          <span class="en" style="display:none">Kuwait, Jahra<br>Al-Aqoul Complex, Block 93, Plot 7<br>Mezzanine Floor, Office 27</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Working Hours -->
+    <div class="info-card" style="background: linear-gradient(135deg, var(--azp), var(--sky2)); border-color: var(--az);">
+      <div class="icon" style="background: var(--az); color: #fff;">🕐</div>
+      <h3><span class="ar">أوقات العمل</span><span class="en" style="display:none">Working Hours</span></h3>
+      <span class="value" style="font-size: 22px; color: var(--az3);"><span class="ar">24 ساعة / 7 أيام</span><span class="en" style="display:none">24/7</span></span>
+      <span class="sub"><span class="ar">خدمة متواصلة على مدار الساعة</span><span class="en" style="display:none">Non-stop service around the clock</span></span>
+    </div>
+    
+  </div>
+</section>
+
+<!-- ===== INSTAGRAM SECTION ===== -->
+<section class="instagram-section">
+  <h2><span class="ar">تابعنا على إنستغرام</span><span class="en" style="display:none">Follow Us on Instagram</span></h2>
+  <a href="https://www.instagram.com/cleantos.kw" target="_blank" class="instagram-btn">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    <span class="ar">@cleantos.kw</span>
+    <span class="en" style="display:none">@cleantos.kw</span>
+  </a>
+</section>
+
+<!-- ===== MAP SECTION ===== -->
+<section class="map-section">
+ <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13912.035529896946!2d47.6815403871582!3d29.340735452261505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3fcff565299f71c7%3A0xec94400726d2e82!2sCleaning%20Kuwait%20-%20Professional%20Cleaning%20Company%20in%20Kuwait!5e0!3m2!1sen!2sus!4v1778069812900!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-content">
+    <img src="logo.png" alt="Cleantos" class="footer-logo"/>
+    <p class="footer-desc">
+      <span class="ar">Cleantos — خدمات التنظيف الاحترافية في الكويت<br>نظافة تتجاوز التوقعات وثقة تدوم طويلاً</span>
+      <span class="en" style="display:none">Cleantos — Professional Cleaning Services in Kuwait<br>Cleanliness Beyond Expectations — Trust That Lasts</span>
+    </p>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/cleantos.kw" target="_blank" class="insta" title="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+      <a href="https://wa.me/96541444878" target="_blank" class="wa" title="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
+    </div>
+    <p class="footer-copy">
+      <span class="ar">© 2026 Cleantos — جميع الحقوق محفوظة</span>
+      <span class="en" style="display:none">© 2026 Cleantos — All Rights Reserved</span>
+    </p>
+  </div>
+</footer>
+
+<script>
+// mobile menu
+function tmob(){document.getElementById('mobn').classList.toggle('o');document.getElementById('hbg').classList.toggle('o');}
+function cmob(){document.getElementById('mobn').classList.remove('o');document.getElementById('hbg').classList.remove('o');}
+
+// scroll
+window.addEventListener('scroll',function(){
+  var p=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  document.getElementById('pgb').style.width=p+'%';
+  document.getElementById('btt').classList.toggle('sh',window.scrollY>400);
+  document.getElementById('hdr').style.boxShadow=window.scrollY>20?'0 4px 22px rgba(90,170,212,.14)':'none';
+});
+
+// reveal
+var _io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');_io.unobserve(x.target);}});},{threshold:0.09});
+document.querySelectorAll('.rv').forEach(function(r){_io.observe(r);});
+
+// language switch
+function setL(l){
+  var isEn=l==='en';
+  document.documentElement.classList.toggle('ltr',isEn);
+  document.getElementById('ba').classList.toggle('a',!isEn);
+  document.getElementById('be').classList.toggle('a',isEn);
+  try{localStorage.setItem('sh_lang',l);}catch(e){}
+}
+
+// restore language
+(function(){try{var l=localStorage.getItem('sh_lang');if(l==='en')setL('en');}catch(e){}})();
+
+// dark mode toggle
+function toggleDM(){
+  var isDark = document.documentElement.classList.toggle('dark');
+  try{localStorage.setItem('sh_dm', isDark ? '1' : '0');}catch(e){}
+  var btn = document.getElementById('dm');
+  if(btn) btn.textContent = isDark ? '☀️' : '🌙';
+}
+
+// restore dark mode
+(function(){try{var d=localStorage.getItem('sh_dm');if(d==='1')document.documentElement.classList.add('dark');}catch(e){}})();
+
+// nav active
+function setActive(href){document.querySelectorAll('.nul a').forEach(function(a){a.classList.toggle('act',a.getAttribute('href')===href);});}
+setActive('contact.html');
+
+// set dark mode button icon
+(function(){var btn=document.getElementById('dm');if(btn)btn.textContent=document.documentElement.classList.contains('dark')?'☀️':'🌙';})();
+
+// Copy Phone Number
+function copyPhone(){
+  var num = '+96541444878';
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(num);
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = num; document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy');
+    document.body.removeChild(ta);
+  }
+  var toast = document.getElementById('toast');
+  if(toast){
+    toast.style.opacity = '1'; toast.style.transform = 'translateY(0)';
+    setTimeout(function(){
+      toast.style.opacity = '0'; toast.style.transform = 'translateY(10px)';
+    }, 2000);
+  }
+}
+</script>
+</body>
+</html>
