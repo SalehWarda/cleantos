@@ -1398,6 +1398,372 @@ html.dark .price-card:hover{
   }
   html{scroll-behavior:auto}
 }
+
+
+/* ═══════════════════════════════════
+   TALY — زر عائم + بنر
+═══════════════════════════════════ */
+
+/* الزر العائم */
+#taly-float {
+  position: fixed;
+  bottom: 90px;
+  right: 22px;
+  z-index: 997;
+  direction: rtl;
+}
+html.ltr #taly-float { left: auto; right: 22px; direction: ltr; }
+
+#taly-float a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #0d1520;
+  border: 1.5px solid #2563eb;
+  border-radius: 50px;
+  padding: 9px 16px 9px 12px;
+  text-decoration: none;
+  box-shadow: 0 0 0 4px rgba(37,99,235,0.10), 0 6px 24px rgba(37,99,235,0.35);
+  animation: taly-glow 2.8s ease-in-out infinite;
+  transition: transform .25s, box-shadow .25s;
+}
+#taly-float a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 0 6px rgba(37,99,235,0.14), 0 12px 32px rgba(37,99,235,0.5);
+}
+@keyframes taly-glow {
+  0%,100% { box-shadow: 0 0 0 4px rgba(37,99,235,0.10), 0 6px 24px rgba(37,99,235,0.3); }
+  50%      { box-shadow: 0 0 0 8px rgba(37,99,235,0.18), 0 8px 30px rgba(37,99,235,0.5); }
+}
+#taly-float .tf-logo { height: 28px; width: auto; object-fit: contain; border-radius: 6px; }
+#taly-float .tf-body { display: flex; flex-direction: column; gap: 1px; }
+#taly-float .tf-label { font-size: 9.5px; font-weight: 700; color: rgba(150,180,220,0.7); line-height: 1; letter-spacing: .4px; text-transform: uppercase; }
+#taly-float .tf-text  { font-size: 12px; font-weight: 800; color: #fff; line-height: 1.3; white-space: nowrap; }
+#taly-float .tf-dots  { display: flex; align-items: center; gap: 3px; }
+#taly-float .tf-dot   { width: 8px; height: 8px; border-radius: 50%; background: rgba(37,99,235,0.4); }
+#taly-float .tf-dot.on{ background: #2563eb; box-shadow: 0 0 6px #2563eb; }
+
+/* البنر */
+.taly-strip {
+  background: #0b1320;
+  border-top:    1.5px solid rgba(37,99,235,0.25);
+  border-bottom: 1.5px solid rgba(37,99,235,0.25);
+  padding: 0 44px;
+  overflow: hidden;
+  position: relative;
+}
+.taly-strip::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(37,99,235,0.06) 40%,
+    rgba(37,99,235,0.12) 50%,
+    rgba(37,99,235,0.06) 60%,
+    transparent 100%);
+  animation: taly-sweep 4s linear infinite;
+}
+@keyframes taly-sweep { from{transform:translateX(100%)} to{transform:translateX(-100%)} }
+html.ltr .taly-strip::before { animation-direction: reverse; }
+
+.taly-strip-inner {
+  max-width: 1340px; margin: 0 auto;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  gap: 20px; flex-wrap: wrap;
+  padding: 16px 0;
+  position: relative; z-index: 1;
+}
+.taly-strip-right { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.taly-strip-logo  { height: 36px; width: auto; object-fit: contain; border-radius: 8px; flex-shrink: 0; }
+.taly-strip-divider { width: 1px; height: 32px; background: rgba(37,99,235,0.3); flex-shrink: 0; }
+.taly-strip-msg h5 {
+  font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 2px; line-height: 1.3;
+}
+.taly-strip-msg p  { font-size: 12px; color: rgba(160,190,230,0.65); line-height: 1; }
+
+.taly-strip-steps {
+  display: flex; align-items: center; gap: 6px;
+}
+.tss { /* step */
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+}
+.tss-num {
+  width: 30px; height: 30px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 900; color: #fff;
+  border: 1.5px solid rgba(37,99,235,0.5);
+  background: rgba(37,99,235,0.1);
+  transition: all .3s;
+}
+.tss.done .tss-num { background: #2563eb; border-color: #2563eb; box-shadow: 0 0 10px rgba(37,99,235,0.5); }
+.tss-lbl { font-size: 9px; font-weight: 700; color: rgba(120,160,210,0.65); white-space: nowrap; }
+.tss-sep { width: 22px; height: 1.5px; background: rgba(37,99,235,0.3); margin-bottom: 12px; }
+
+.taly-strip-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff; font-size: 13px; font-weight: 800;
+  padding: 10px 22px; border-radius: 50px;
+  text-decoration: none; white-space: nowrap; flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(37,99,235,0.4);
+  transition: all .25s; font-family: inherit;
+}
+.taly-strip-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,99,235,0.55); }
+.taly-strip-btn svg { flex-shrink: 0; }
+
+@media(max-width:800px){
+  .taly-strip { padding: 0 16px; }
+  .taly-strip-divider { display: none; }
+  .taly-strip-msg p { display: none; }
+  .tss-lbl { display: none; }
+  #taly-float { bottom: 86px;  }
+  html.ltr #taly-float { left: auto; right: 12px; }
+  #taly-float .tf-body .tf-text { font-size: 11px; }
+}
+
+/* ═══════════════════════════════════
+   TALY — بنر دفع بالتقسيط (متكرر)
+═══════════════════════════════════ */
+
+/* بنر تالي الرئيسي - يظهر بين الأقسام */
+.taly-banner {
+  background: linear-gradient(135deg, #0a1628 0%, #1a2744 50%, #0d1b2a 100%);
+  padding: 32px 44px;
+  position: relative;
+  overflow: hidden;
+  border-top: 2px solid rgba(37, 99, 235, 0.3);
+  border-bottom: 2px solid rgba(37, 99, 235, 0.3);
+}
+.taly-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(37, 165, 95, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+.taly-banner-inner {
+  max-width: 1340px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+}
+.taly-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.taly-banner-logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  filter: drop-shadow(0 4px 12px rgba(37, 99, 235, 0.4));
+}
+.taly-banner-text h3 {
+  font-size: 20px;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.taly-banner-text p {
+  font-size: 14px;
+  color: rgba(160, 190, 230, 0.8);
+  font-weight: 600;
+}
+.taly-banner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 800;
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+  white-space: nowrap;
+}
+.taly-banner-badge .pulse-dot {
+  width: 8px;
+  height: 8px;
+  background: #00ff88;
+  border-radius: 50%;
+  animation: taly-pulse 2s infinite;
+}
+@keyframes taly-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+.taly-banner-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: all 0.3s;
+  box-shadow: 0 6px 24px rgba(37, 99, 235, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+}
+.taly-banner-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(37, 99, 235, 0.55);
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+}
+.taly-banner-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* بنر تالي المدمج مع البطاقات */
+.taly-inline-banner {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(37, 165, 95, 0.05));
+  border: 2px dashed rgba(37, 99, 235, 0.3);
+  border-radius: 20px;
+  padding: 24px 32px;
+  margin: 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  text-align: center;
+  transition: all 0.3s;
+}
+.taly-inline-banner:hover {
+  border-color: rgba(37, 99, 235, 0.6);
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(37, 165, 95, 0.08));
+  transform: translateY(-2px);
+}
+.taly-inline-banner img {
+  height: 40px;
+  width: auto;
+}
+.taly-inline-banner span {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--az3);
+}
+.taly-inline-banner .taly-highlight {
+  color: #2563eb;
+  font-weight: 900;
+}
+
+/* شريط تالي اللزق في الأسفل (للموبايل) */
+.taly-sticky-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #0a1628, #1a2744);
+  border-top: 2px solid rgba(37, 99, 235, 0.4);
+  padding: 12px 20px;
+  z-index: 996;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.taly-sticky-bar-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+.taly-sticky-bar-text img {
+  height: 32px;
+  width: auto;
+  border-radius: 6px;
+}
+.taly-sticky-bar-btn {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+}
+
+/* تحسين الزر العائم الموجود */
+#taly-float {
+  position: fixed;
+  bottom: 90px;
+  right: 22px;
+  z-index: 997;
+  direction: rtl;
+}
+html.ltr #taly-float { left: auto; right: 22px; direction: ltr; }
+
+#taly-float a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #0d1520;
+  border: 1.5px solid #2563eb;
+  border-radius: 50px;
+  padding: 10px 18px 10px 14px;
+  text-decoration: none;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.10), 0 6px 24px rgba(37, 99, 235, 0.35);
+  animation: taly-glow 2.8s ease-in-out infinite;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+#taly-float a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.14), 0 12px 32px rgba(37, 99, 235, 0.5);
+}
+@keyframes taly-glow {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.10), 0 6px 24px rgba(37, 99, 235, 0.3); }
+  50%      { box-shadow: 0 0 0 8px rgba(37, 99, 235, 0.18), 0 8px 30px rgba(37, 99, 235, 0.5); }
+}
+#taly-float .tf-logo { height: 32px; width: auto; object-fit: contain; border-radius: 8px; }
+#taly-float .tf-body { display: flex; flex-direction: column; gap: 2px; }
+#taly-float .tf-label { font-size: 10px; font-weight: 700; color: rgba(150, 180, 220, 0.7); line-height: 1; letter-spacing: 0.4px; text-transform: uppercase; }
+#taly-float .tf-text  { font-size: 13px; font-weight: 800; color: #fff; line-height: 1.3; white-space: nowrap; }
+#taly-float .tf-dots  { display: flex; align-items: center; gap: 3px; margin-right: 4px; }
+#taly-float .tf-dot   { width: 7px; height: 7px; border-radius: 50%; background: rgba(37, 99, 235, 0.4); transition: all 0.3s; }
+#taly-float .tf-dot.on{ background: #2563eb; box-shadow: 0 0 8px #2563eb; }
+
+/* Responsive */
+@media(max-width: 800px) {
+  .taly-banner { padding: 24px 20px; }
+  .taly-banner-inner { flex-direction: column; text-align: center; }
+  .taly-banner-left { flex-direction: column; text-align: center; }
+  .taly-banner-text h3 { font-size: 18px; }
+  .taly-banner-btn { width: 100%; justify-content: center; }
+  .taly-inline-banner { padding: 18px 20px; }
+  .taly-inline-banner span { font-size: 14px; }
+  .taly-sticky-bar { display: flex; }
+  #taly-float { bottom: 96px; right: 12px; }
+  html.ltr #taly-float { left: auto; right: 12px; }
+  #taly-float .tf-body .tf-text { font-size: 11px; }
+  #taly-float .tf-logo { height: 26px; }
+}
+
+@media(max-width: 600px) {
+  .taly-banner-text h3 { font-size: 16px; }
+  .taly-banner-text p { font-size: 12px; }
+  .taly-banner-badge { font-size: 12px; padding: 8px 14px; }
+}
 </style>
  <!-- Structured Data: LocalBusiness + Service -->
   <script type="application/ld+json">
@@ -1649,12 +2015,12 @@ html.dark .price-card:hover{
         <span class="en">Cleantos — House & Furniture Cleaning Services</span>
       </div>
       <h1 class="hero-title house-title anim anim-d2">
-        <span class="ar">نظافة منزلك <em>أولويتنا</em><br/>تنظيف عميق وتعقيم شامل</span>
+        <span class="ar">نظافة أثاثك ومنزلك <em>أولويتنا</em><br/>تنظيف عميق وتعقيم شامل</span>
         <span class="en">Your Home Cleanliness <em>Is Our Priority</em><br/>Deep Cleaning & Full Sanitization</span>
       </h1>
       <p class="hero-desc anim anim-d3">
-        <span class="ar">نقدم خدمات تنظيف احترافية للمنازل والأثاث بأحدث المعدات وأجود المواد. من الكنب والسجاد إلى الستائر والمفروشات — نعيد لمنزلك بريقه وجماله.</span>
-        <span class="en">We provide professional house and furniture cleaning services with the latest equipment and finest materials. From sofas and carpets to curtains and upholstery — we restore your home's sparkle and beauty.</span>
+        <span class="ar">نقدم خدمات تنظيف احترافية للمنازل والشقق والمطابخ بأحدث المعدات وأجود المواد. والأثاث من الكنب والماترس والسجاد إلى الستائر والمفروشات — نعيد لمنزلك بريقه وجماله.</span>
+        <span class="en">We provide professional cleaning services for homes, apartments, and kitchens with the latest equipment and the finest materials. From furniture like sofas, mattresses, and carpets to curtains and furnishings — we restore the sparkle and beauty of your home.</span>
       </p>
       <div class="hero-buttons anim anim-d3">
         <a href="https://wa.me/96541444878?text=أريد%20حجز%20تنظيف%20منزل" target="_blank" class="btn house-btn btn-lg">
@@ -1699,6 +2065,12 @@ html.dark .price-card:hover{
     </div>
   </div>
 </section>
+
+<!-- ═══ TALY INLINE BANNER ═══ -->
+<div class="taly-inline-banner">
+  <img src="talyy.png"  alt="Taly" style="border-radius: 10px;"/>
+  <span><span class="ar">💳 ادفع بالتقسيط على <span class="taly-highlight">4 دفعات</span> مع تالي — بدون فوائد!</span><span class="en" style="display:none">💳 Pay in <span class="taly-highlight">4 installments</span> with Taly — 0% interest!</span></span>
+</div>
 
 <!-- SERVICES SECTION -->
 <section class="pad" id="services" style="background:var(--w);">
@@ -1758,7 +2130,7 @@ html.dark .price-card:hover{
       <div class="srv-card-house">
         <div class="ico">🏠</div>
         <h4>
-          <span class="ar">تنظيف المنازل الشامل</span>
+          <span class="ar">تنظيف المنازل والشقق الشامل</span>
           <span class="en">Full House Cleaning</span>
         </h4>
         <p>
@@ -1769,7 +2141,7 @@ html.dark .price-card:hover{
       <div class="srv-card-house">
         <div class="ico">🛏️</div>
         <h4>
-          <span class="ar">تنظيف المراتب والمخدات</span>
+          <span class="ar">تنظيف الماترس والمراتب </span>
           <span class="en">Mattress & Pillow Cleaning</span>
         </h4>
         <p>
@@ -1791,8 +2163,8 @@ html.dark .price-card:hover{
       <div class="srv-card-house">
         <div class="ico">🦠</div>
         <h4>
-          <span class="ar">تعقيم وتطهير</span>
-          <span class="en">Sanitization & Disinfection</span>
+          <span class="ar">تنظيف المطابخ والمداخل</span>
+          <span class="en">Cleaning kitchens and entrances</span>
         </h4>
         <p>
           <span class="ar">تعقيم شامل بمواد معتمدة من وزارة الصحة لحماية أسرتك</span>
@@ -1899,6 +2271,39 @@ html.dark .price-card:hover{
         </p>
       </div>
     </div>
+  </div>
+</section>
+
+
+<!-- ═══ TALY PAYMENT BANNER ═══ -->
+<section class="taly-banner">
+  <div class="taly-banner-inner">
+    <div class="taly-banner-left">
+      <img src="talyy.png" alt="Taly" class="taly-banner-logo"/>
+      <div class="taly-banner-text">
+        <h3><span class="ar">💳 ادفع بالتقسيط على 4 دفعات</span><span class="en" style="display:none">💳 Pay in 4 Installments</span></h3>
+        <p><span class="ar">بدون فوائد • بدون رسوم خفية • موافقة فورية</span><span class="en" style="display:none">0% interest • No hidden fees • Instant approval</span></p>
+      </div>
+      <div class="taly-banner-badge">
+        <span class="pulse-dot"></span>
+        <span class="ar">4 دفعات</span><span class="en" style="display:none">4 Payments</span>
+      </div>
+    </div>
+    
+       <a href="https://wa.me/96541444878" target="_blank" class="taly-banner-btn" style="margin-left: 10px; margin-bottom: 10px; font-size:16px;padding:10px 40px;border-radius:30px;box-shadow:0 8px 30px rgba(90,170,212,.35);animation:pulse-btn 2s infinite">
+        <span style="font-size:20px;margin-left:8px">
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0 0 48 48">
+             <path fill="#fff" 
+             d="M4.9,43.3l2.7-9.8C5.9,30.6,5,27.3,5,24C5,13.5,13.5,5,24,5c5.1,0,9.8,2,13.4,5.6	C41,14.2,43,18.9,43,24c0,10.5-8.5,19-19,19c0,0,0,0,0,0h0c-3.2,0-6.3-0.8-9.1-2.3L4.9,43.3z"></path><path fill="#fff" d="M4.9,43.8c-0.1,0-0.3-0.1-0.4-0.1c-0.1-0.1-0.2-0.3-0.1-0.5L7,33.5c-1.6-2.9-2.5-6.2-2.5-9.6	C4.5,13.2,13.3,4.5,24,4.5c5.2,0,10.1,2,13.8,5.7c3.7,3.7,5.7,8.6,5.7,13.8c0,10.7-8.7,19.5-19.5,19.5c-3.2,0-6.3-0.8-9.1-2.3	L5,43.8C5,43.8,4.9,43.8,4.9,43.8z"></path><path fill="#cfd8dc" d="M24,5c5.1,0,9.8,2,13.4,5.6C41,14.2,43,18.9,43,24c0,10.5-8.5,19-19,19h0c-3.2,0-6.3-0.8-9.1-2.3	L4.9,43.3l2.7-9.8C5.9,30.6,5,27.3,5,24C5,13.5,13.5,5,24,5 M24,43L24,43L24,43 M24,43L24,43L24,43 M24,4L24,4C13,4,4,13,4,24	c0,3.4,0.8,6.7,2.5,9.6L3.9,43c-0.1,0.3,0,0.7,0.3,1c0.2,0.2,0.4,0.3,0.7,0.3c0.1,0,0.2,0,0.3,0l9.7-2.5c2.8,1.5,6,2.2,9.2,2.2	c11,0,20-9,20-20c0-5.3-2.1-10.4-5.8-14.1C34.4,6.1,29.4,4,24,4L24,4z"></path><path fill="#40c351" d="M35.2,12.8c-3-3-6.9-4.6-11.2-4.6C15.3,8.2,8.2,15.3,8.2,24c0,3,0.8,5.9,2.4,8.4L11,33l-1.6,5.8	l6-1.6l0.6,0.3c2.4,1.4,5.2,2.2,8,2.2h0c8.7,0,15.8-7.1,15.8-15.8C39.8,19.8,38.2,15.8,35.2,12.8z"></path><path fill="#fff" fill-rule="evenodd" d="M19.3,16c-0.4-0.8-0.7-0.8-1.1-0.8c-0.3,0-0.6,0-0.9,0	s-0.8,0.1-1.3,0.6c-0.4,0.5-1.7,1.6-1.7,4s1.7,4.6,1.9,4.9s3.3,5.3,8.1,7.2c4,1.6,4.8,1.3,5.7,1.2c0.9-0.1,2.8-1.1,3.2-2.3	c0.4-1.1,0.4-2.1,0.3-2.3c-0.1-0.2-0.4-0.3-0.9-0.6s-2.8-1.4-3.2-1.5c-0.4-0.2-0.8-0.2-1.1,0.2c-0.3,0.5-1.2,1.5-1.5,1.9	c-0.3,0.3-0.6,0.4-1,0.1c-0.5-0.2-2-0.7-3.8-2.4c-1.4-1.3-2.4-2.8-2.6-3.3c-0.3-0.5,0-0.7,0.2-1c0.2-0.2,0.5-0.6,0.7-0.8	c0.2-0.3,0.3-0.5,0.5-0.8c0.2-0.3,0.1-0.6,0-0.8C20.6,19.3,19.7,17,19.3,16z" clip-rule="evenodd"></path>
+</svg></span>
+       <span class="ar">تواصل معنا</span><span class="en" style="display:none">Call Us Now</span>
+      </a>
+
+
+    <!-- <a href="https://www.taly.io/" target="_blank" class="taly-banner-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      <span class="ar">تواصل معنا</span><span class="en" style="display:none">Call Us Now</span>
+    </a> -->
   </div>
 </section>
 
@@ -2121,8 +2526,8 @@ html.dark .price-card:hover{
 <!-- CTA SECTION -->
 <section class="cta-house">
   <h2>
-    <span class="ar">جاهز تنظف منزلك؟</span>
-    <span class="en">Ready to Clean Your Home?</span>
+    <span class="ar">جاهز تنظف منزلك وأثاثك؟</span>
+    <span class="en">Ready to Clean Your Home and your furniture</span>
   </h2>
   <p>
     <span class="ar">احجز موعدك الآن واستمتع بنظافة مثالية مع ضمان الرضا التام. فريقنا جاهز لخدمتك في جميع مناطق الكويت.</span>
@@ -2145,15 +2550,15 @@ html.dark .price-card:hover{
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="logodark.png" alt="Cleantos" style="height:60px;width:auto;object-fit:contain;margin-bottom:16px"/>
-        <p>
-          <span class="ar">نظافة تتجاوز التوقعات.. وثقة تدوم طويلاً — Cleantos شريكك الموثوق في التنظيف الاحترافي في الكويت.</span>
-          <span class="en">Cleanliness beyond expectations.. trust that lasts — Cleantos is your trusted professional cleaning partner in Kuwait.</span>
-        </p>
+             <img src="logoo.png" alt="Cleantos" style="height:120px;width:auto;object-fit:contain;margin-bottom:16px"/>
+
+        <p><span class="ar">نظافة تتجاوز التوقعات.. وثقة تدوم طويلاً — Cleantos شريكك الموثوق في التنظيف الاحترافي في الكويت.</span><span class="en" style="display:none">Cleanliness beyond expectations.. trust that lasts — Cleantos is your trusted cleaning partner in Kuwait.</span></p>
         <div class="footer-contact">
           <div class="footer-contact-item">
             <span class="footer-contact-label">WhatsApp</span>
             <a href="https://wa.me/96541444878" target="_blank" class="footer-contact-value">96541444878</a>
+                        <a href="https://wa.me/96541444898" target="_blank" class="footer-contact-value">96541444898</a>
+
           </div>
           <div class="footer-contact-item">
             <span class="footer-contact-label">Email</span>
@@ -2162,62 +2567,111 @@ html.dark .price-card:hover{
         </div>
       </div>
       <div class="footer-col">
-        <h4>
-          <span class="ar">خدماتنا</span>
-          <span class="en">Services</span>
-        </h4>
+        <h4><span class="ar">خدماتنا</span><span class="en" style="display:none">Services</span></h4>
         <ul>
-          <li><a href="house.html"><span class="ar">تنظيف المنازل</span><span class="en">House Cleaning</span></a></li>
-          <li><a href="car.html"><span class="ar">تنظيف السيارات</span><span class="en">Car Cleaning</span></a></li>
-          <li><a href="#"><span class="ar">تنظيف الأثاث</span><span class="en">Furniture Cleaning</span></a></li>
-          <li><a href="#"><span class="ar">التعقيم والتطهير</span><span class="en">Sanitization</span></a></li>
+          <li><a href="#house"><span class="ar">تنظيف المنازل</span><span class="en" style="display:none">House Cleaning</span></a></li>
+          <li><a href="#cars"><span class="ar">تنظيف السيارات</span><span class="en" style="display:none">Car Cleaning</span></a></li>
+          <li><a href="#"><span class="ar">تنظيف الأثاث</span><span class="en" style="display:none">Furniture Cleaning</span></a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>
-          <span class="ar">الشركة</span>
-          <span class="en">Company</span>
-        </h4>
+        <h4><span class="ar">الشركة</span><span class="en" style="display:none">Company</span></h4>
         <ul>
-          <li><a href="#"><span class="ar">من نحن</span><span class="en">About Us</span></a></li>
-          <li><a href="#why-us"><span class="ar">لماذا نحن</span><span class="en">Why Us</span></a></li>
-          <li><a href="#testimonials"><span class="ar">آراء العملاء</span><span class="en">Reviews</span></a></li>
-          <li><a href="contact.html"><span class="ar">تواصل معنا</span><span class="en">Contact</span></a></li>
+          <li><a href="#"><span class="ar">من نحن</span><span class="en" style="display:none">About Us</span></a></li>
+          <li><a href="#why-us"><span class="ar">لماذا نحن</span><span class="en" style="display:none">Why Us</span></a></li>
+          <li><a href="#testimonials"><span class="ar">آراء العملاء</span><span class="en" style="display:none">Reviews</span></a></li>
+          <li><a href="contact.html"><span class="ar">تواصل معنا</span><span class="en" style="display:none">Contact</span></a></li>
         </ul>
       </div>
+     
     </div>
 
-    <!-- Social Media -->
-    <div class="social-section">
-      <p class="social-title">
-        <span class="ar">تابعنا على منصات التواصل الاجتماعي</span>
-        <span class="en">Follow Us on Social Media</span>
-      </p>
-      <div class="social-grid">
-        <a href="https://www.instagram.com/cleantos.kw" target="_blank" class="social-link instagram" aria-label="Instagram">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-        </a>
-        <a href="#" target="_blank" class="social-link facebook" aria-label="Facebook">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        </a>
-        <a href="#" target="_blank" class="social-link tiktok" aria-label="TikTok">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-        </a>
-        <a href="https://wa.me/96541444878" target="_blank" class="social-link whatsapp" aria-label="WhatsApp">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        </a>
-        <a href="#" target="_blank" class="social-link snapchat" aria-label="Snapchat">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.166.006c.91-.006 4.57.255 6.326 3.957.617 1.29.47 3.467.376 5.044l-.013.22c-.002.043.03.08.073.09.28.06.567-.024.83-.104.287-.086.55-.164.784-.156.213.007.627.09.81.476.162.34.023.67-.12.836-.022.025-.05.053-.082.082-.336.313-.878.49-1.56.788-.092.04-.184.084-.274.13-.07.034-.14.078-.14.135 0 .028.01.058.028.088.216.39.74 1.21 1.712 1.835.257.164.505.283.745.35.328.092.476.458.312.758-.302.556-1.057.83-2.38 1.027-.066.01-.11.068-.097.133.027.14.073.31.135.498.09.277.108.542-.077.73-.192.196-.46.217-.672.217-.21 0-.397-.032-.574-.06-.31-.053-.592-.1-.965.013-.455.136-.866.5-1.34.918-.717.629-1.527 1.342-2.888 1.342-.02 0-.04 0-.062-.001-.022.001-.042.001-.062.001-1.36 0-2.17-.713-2.887-1.342-.474-.418-.885-.782-1.34-.918-.373-.113-.655-.066-.965-.013-.178.028-.364.06-.574.06-.213 0-.48-.021-.673-.217-.184-.188-.167-.453-.076-.73.062-.188.108-.358.134-.498.014-.065-.03-.124-.096-.133-1.323-.196-2.078-.47-2.38-1.027-.165-.3-.017-.666.311-.757.24-.068.489-.187.745-.351.973-.624 1.496-1.444 1.713-1.835.017-.03.027-.06.027-.088 0-.057-.07-.101-.14-.135-.09-.046-.182-.09-.274-.13-.68-.298-1.224-.475-1.56-.788-.032-.029-.06-.057-.082-.082-.143-.165-.282-.495-.12-.836.183-.387.597-.47.81-.476.234-.008.497.07.784.156.263.08.55.164.83.104.044-.01.075-.047.073-.09l-.013-.22c-.094-1.577-.24-3.754.376-5.044C7.597.261 11.256 0 12.166.006z"/></svg>
-        </a>
-      </div>
-    </div>
 
+  
     <div class="footer-bottom">
-      <p class="footer-copyright">
-        <span class="ar">© 2026 Cleantos — جميع الحقوق محفوظة</span>
-        <span class="en">© 2026 Cleantos — All Rights Reserved</span>
-      </p>
+
+      
+      <p class="footer-copyright"><span class="ar">© 2026 Cleantos — جميع الحقوق محفوظة</span><span class="en" style="display:none">© 2026 Cleantos — All Rights Reserved</span></p>
+   
+
+           <!-- Social Media Section -->
+  <div style="border-top:1px solid var(--bd2);padding:32px 0 24px;text-align:center">
+    <p style="color:var(--txl);font-size:13px;font-weight:600;margin-bottom:20px;letter-spacing:.5px">
+      <span class="ar">تابعنا على منصات التواصل الاجتماعي</span>
+      <span class="en" style="display:none">Follow Us on Social Media</span>
+    </p>
+    <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap">
+
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/cleantos.kw" target="_blank" title="Instagram"
+        style="width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 2px 10px rgba(220,39,67,.3)"
+        onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 20px rgba(220,39,67,.4)'"
+        onmouseleave="this.style.transform='';this.style.boxShadow='0 2px 10px rgba(220,39,67,.3)'">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+
+      <!-- LinkedIn -->
+      <!-- <a href="https://linkedin.com/company/alshumukh-engineering" target="_blank" title="LinkedIn"
+        style="width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:#0077b5;color:#fff;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 2px 10px rgba(0,119,181,.3)"
+        onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 20px rgba(0,119,181,.4)'"
+        onmouseleave="this.style.transform='';this.style.boxShadow='0 2px 10px rgba(0,119,181,.3)'">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a> -->
+
+      <!-- X (Twitter) -->
+      <!-- <a href="https://x.com/alshumukh_eng" target="_blank" title="X (Twitter)"
+        style="width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:#000;color:#fff;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 2px 10px rgba(0,0,0,.25)"
+        onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 20px rgba(0,0,0,.35)'"
+        onmouseleave="this.style.transform='';this.style.boxShadow='0 2px 10px rgba(0,0,0,.25)'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.213 5.567zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a> -->
+
+      <!-- Facebook -->
+      <!-- <a href="#javascript:(0)" target="_blank" title="Facebook"
+        style="width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:#1877f2;color:#fff;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 2px 10px rgba(24,119,242,.3)"
+        onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 20px rgba(24,119,242,.4)'"
+        onmouseleave="this.style.transform='';this.style.boxShadow='0 2px 10px rgba(24,119,242,.3)'">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a> -->
+
+      <!-- YouTube -->
+      <!-- <a href="https://youtube.com/@alshumukh_eng" target="_blank" title="YouTube"
+        style="width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:#ff0000;color:#fff;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 2px 10px rgba(255,0,0,.3)"
+        onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 20px rgba(255,0,0,.4)'"
+        onmouseleave="this.style.transform='';this.style.boxShadow='0 2px 10px rgba(255,0,0,.3)'">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a> -->
+
+      <!-- TikTok -->
+      <a href="#javascript:(0)" target="_blank" title="TikTok"
+        style="width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:#010101;color:#fff;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 2px 10px rgba(0,0,0,.3)"
+        onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 20px rgba(0,0,0,.4)'"
+        onmouseleave="this.style.transform='';this.style.boxShadow='0 2px 10px rgba(0,0,0,.3)'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+      </a>
+
+      <!-- WhatsApp -->
+      <a href="https://wa.me/96541444878" target="_blank" title="WhatsApp"
+        style="width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:#25d366;color:#fff;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 2px 10px rgba(37,211,102,.3)"
+        onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 20px rgba(37,211,102,.4)'"
+        onmouseleave="this.style.transform='';this.style.boxShadow='0 2px 10px rgba(37,211,102,.3)'">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
+
+
+     <!-- Snapchat -->
+      <!-- <a href="#javascript:(0)" target="_blank" title="Snapchat"
+        style="width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(222,219,78,1);color:#fff;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 2px 10px rgba(51,136,187,.25)"
+        onmouseenter="this.style.background='rgba(222,219,78,1)';this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 20px rgba(90,170,212,.35)'"
+        onmouseleave="this.style.background='rgba(222,219,78,1)';this.style.transform='';this.style.boxShadow='0 2px 10px rgba(51,136,187,.25)'">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.166.006c.91-.006 4.57.255 6.326 3.957.617 1.29.47 3.467.376 5.044l-.013.22c-.002.043.03.08.073.09.28.06.567-.024.83-.104.287-.086.55-.164.784-.156.213.007.627.09.81.476.162.34.023.67-.12.836-.022.025-.05.053-.082.082-.336.313-.878.49-1.56.788-.092.04-.184.084-.274.13-.07.034-.14.078-.14.135 0 .028.01.058.028.088.216.39.74 1.21 1.712 1.835.257.164.505.283.745.35.328.092.476.458.312.758-.302.556-1.057.83-2.38 1.027-.066.01-.11.068-.097.133.027.14.073.31.135.498.09.277.108.542-.077.73-.192.196-.46.217-.672.217-.21 0-.397-.032-.574-.06-.31-.053-.592-.1-.965.013-.455.136-.866.5-1.34.918-.717.629-1.527 1.342-2.888 1.342-.02 0-.04 0-.062-.001-.022.001-.042.001-.062.001-1.36 0-2.17-.713-2.887-1.342-.474-.418-.885-.782-1.34-.918-.373-.113-.655-.066-.965-.013-.178.028-.364.06-.574.06-.213 0-.48-.021-.673-.217-.184-.188-.167-.453-.076-.73.062-.188.108-.358.134-.498.014-.065-.03-.124-.096-.133-1.323-.196-2.078-.47-2.38-1.027-.165-.3-.017-.666.311-.757.24-.068.489-.187.745-.351.973-.624 1.496-1.444 1.713-1.835.017-.03.027-.06.027-.088 0-.057-.07-.101-.14-.135-.09-.046-.182-.09-.274-.13-.68-.298-1.224-.475-1.56-.788-.032-.029-.06-.057-.082-.082-.143-.165-.282-.495-.12-.836.183-.387.597-.47.81-.476.234-.008.497.07.784.156.263.08.55.164.83.104.044-.01.075-.047.073-.09l-.013-.22c-.094-1.577-.24-3.754.376-5.044C7.597.261 11.256 0 12.166.006z"/></svg>
+      </a> -->
     </div>
+  </div>
+   
+    </div>
+
+    
   </div>
 </footer>
 
